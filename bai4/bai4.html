@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function xuLySoNguyen() {
+            let danhSachSo = [];
+
+            while (true) {
+                let luaChon = parseInt(prompt("Chọn chức năng:\n1. Nhập danh sách số\n2. Tính trung bình\n3. Tìm số chẵn lớn nhất\n4. Tìm số lẻ nhỏ nhất\n5. Thoát"));
+
+                if (luaChon === 5) return alert("Thoát chương trình.");
+
+                if (luaChon === 1) {
+                    danhSachSo = prompt("Nhập các số nguyên, cách nhau bởi dấu cách:")
+                        .split(" ").map(Number);
+                } else if (danhSachSo.length === 0) {
+                    alert("Danh sách trống, vui lòng nhập số trước.");
+                    continue;
+                }
+
+                let ketQua = luaChon === 2 ? danhSachSo.reduce((a, b) => a + b, 0) / danhSachSo.length :
+                    luaChon === 3 ? Math.max(...danhSachSo.filter(n => n % 2 === 0), -Infinity) :
+                        luaChon === 4 ? Math.min(...danhSachSo.filter(n => n % 2 !== 0), Infinity) : null;
+
+                alert(ketQua === -Infinity || ketQua === Infinity ? "Không tìm thấy kết quả." : "Kết quả: " + ketQua);
+            }
+        }
+
+        xuLySoNguyen();
+
+    </script>
+</body>
+
+</html>

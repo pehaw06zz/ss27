@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function menuHinhHoc() {
+    while (true) {
+        let luaChon = parseInt(prompt("Chọn chức năng:\n1. Diện tích hình tròn\n2. Chu vi hình tròn\n3. Diện tích hình chữ nhật\n4. Chu vi hình chữ nhật\n5. Thoát"));
+        
+        if (luaChon === 5) {
+            alert("Thoát chương trình.");
+            return;
+        }
+        
+        let giaTri1 = parseFloat(prompt("Nhập giá trị thứ nhất: "));
+        let giaTri2 = (luaChon > 2) ? parseFloat(prompt("Nhập giá trị thứ hai: ")) : 0;
+        
+        if (giaTri1 <= 0 || (luaChon > 2 && giaTri2 <= 0)) {
+            alert("Giá trị phải lớn hơn 0.");
+            continue;
+        }
+        
+        let ketQua = luaChon === 1 ? Math.PI * giaTri1 * giaTri1 :
+                     luaChon === 2 ? 2 * Math.PI * giaTri1 :
+                     luaChon === 3 ? giaTri1 * giaTri2 :
+                     luaChon === 4 ? 2 * (giaTri1 + giaTri2) : null;
+        
+        alert(ketQua !== null ? "Kết quả: " + ketQua.toFixed(2) : "Lựa chọn không hợp lệ.");
+    }
+}
+
+menuHinhHoc();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function studentManagement() {
+            let students = [];
+
+            while (true) {
+                let choice = parseInt(prompt("Chọn chức năng:\n1. Nhập danh sách sinh viên\n2. Hiển thị danh sách sinh viên\n3. Tìm sinh viên theo tên\n4. Xóa sinh viên khỏi danh sách\n5. Thoát"));
+
+                switch (choice) {
+                    case 1:
+                        let count = parseInt(prompt("Nhập số lượng sinh viên: "));
+                        for (let i = 0; i < count; i++) {
+                            let name = prompt(`Nhập tên sinh viên thứ ${i + 1}:`);
+                            students.push(name);
+                        }
+                        break;
+                    case 2:
+                        if (students.length === 0) {
+                            alert("Danh sách sinh viên trống.");
+                        } else {
+                            alert("Danh sách sinh viên:\n" + students.join("\n"));
+                        }
+                        break;
+                    case 3:
+                        let searchName = prompt("Nhập tên sinh viên cần tìm: ");
+                        let found = students.find(student => student === searchName);
+                        if (found) {
+                            alert("Đã tìm thấy sinh viên: " + found);
+                        } else {
+                            alert("Sinh viên không có trong danh sách.");
+                        }
+                        break;
+                    case 4:
+                        let deleteName = prompt("Nhập tên sinh viên cần xóa: ");
+                        let index = students.indexOf(deleteName);
+                        if (index !== -1) {
+                            students.splice(index, 1);
+                            alert("Đã xóa sinh viên: " + deleteName);
+                        } else {
+                            alert("Sinh viên không có trong danh sách.");
+                        }
+                        break;
+                    case 5:
+                        alert("Thoát chương trình.");
+                        return;
+                    default:
+                        alert("Lựa chọn không hợp lệ, vui lòng thử lại.");
+                }
+            }
+        }
+
+        studentManagement();
+
+    </script>
+</body>
+
+</html>
